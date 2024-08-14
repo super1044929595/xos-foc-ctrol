@@ -135,18 +135,30 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
-
+  static int32_t xos_inter=0;
+  static int32_t xos_pwm_enable=0;
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
 		/* USER CODE END WHILE */
-		__HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_3,5);
-		HAL_Delay(1000);
-		__HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_3,25);
-		HAL_Delay(500);
-		__HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_3,15);
-		HAL_Delay(500);
+
+	if(xos_pwm_enable==0){
+		xos_inter+=5;
+		if(xos_inter>=50){
+			xos_pwm_enable=1;
+		}
+
+	}else{
+		xos_inter-=5;
+		if(xos_inter<=0){
+			xos_pwm_enable=0;
+	
+		}
+
+	}		
+	__HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_3,xos_inter);
+	HAL_Delay(100);
 		/* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
