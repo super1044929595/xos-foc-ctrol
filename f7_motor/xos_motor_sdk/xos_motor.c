@@ -103,7 +103,7 @@ void xo_SetSysTick(void)
 	++xos_SysTick_CNt;
 
 	if(xos_SysTick_CNt%120==0){
-		velocityOpenloop(2,5,TIM2);
+		velocityOpenloop(2,5/3,TIM2);
 	}
 }
 
@@ -254,26 +254,39 @@ static uint32_t pre_us=0;
 }
 
 
-uint32_t xos_ua=0;
-uint32_t xos_ub=0;
-uint32_t xos_uc=0;
+float xos_ua=0;
+float xos_ub=0;
+float xos_uc=0;
+
+float xos_pwma=0;
+float xos_pwmb=0;
+float xos_pwmc=0;
 void setPwm(float Ua, float Ub, float Uc, TIM_TypeDef * TIM_BASE)
 {
 	//  // 限制上限
-	Ua = _constrain(Ua, 0.0f, voltage_limit);
-	Ub = _constrain(Ub, 0.0f, voltage_limit);
-	Uc = _constrain(Uc, 0.0f, voltage_limit);
+	//Ua = _constrain(Ua/, 0.0f, voltage_limit);
+	//Ub = _constrain(Ub, 0.0f, voltage_limit);
+	//Uc = _constrain(Uc, 0.0f, voltage_limit);
+	xos_ua=Ua;
+	xos_ub=Ub;
+	xos_uc=Uc;
+	
 	// 计算占空比
 	// 限制占空比从0到1
 	float dc_a = _constrain(Ua / voltage_power_supply, 0.0f , 1.0f );
 	float dc_b = _constrain(Ub / voltage_power_supply, 0.0f , 1.0f );
 	float dc_c = _constrain(Uc / voltage_power_supply, 0.0f , 1.0f );
+	
+	xos_ua=dc_a;
+	xos_ub=dc_b;
+	xos_uc=dc_c;
+	
 	TIM2->CCR1 = (uint32_t) roundf(dc_a*period);
 	TIM2->CCR3 = (uint32_t) roundf(dc_c*period);	
 	TIM2->CCR4 = (uint32_t) roundf(dc_b*period);
-	xos_ua=TIM2->CCR1;
-	xos_ub=TIM2->CCR4;
-	xos_uc=TIM2->CCR3;
+	xos_pwma=TIM2->CCR1;
+	xos_pwmb=TIM2->CCR4;
+	xos_pwmc=TIM2->CCR3;
 }
 
 //---------------------------------------------------------------------------------------------
@@ -294,9 +307,9 @@ void setPhaseVoltage(float Uq,float Ud, float angle_el, TIM_TypeDef * TIM_BASE) 
 	float Ub = (sqrt(3)*Ubeta-Ualpha)/2 + voltage_power_supply/2;
 	float Uc = (-Ualpha-sqrt(3)*Ubeta)/2 + voltage_power_supply/2;
 
-	xos_ua_ori=Ua-voltage_power_supply/2;
-	xos_ub_ori=Ub-voltage_power_supply/2;
-	xos_uc_ori=Uc-voltage_power_supply/2;
+	xos_ua_ori=Ua;
+	xos_ub_ori=Ub;
+	xos_uc_ori=Uc;
 
 	setPwm(Ua,Ub,Uc,TIM_BASE);
 
