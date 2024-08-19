@@ -1,8 +1,8 @@
 --cpu Cortex-M7.fp.dp
 "f7_motor\startup_stm32f767xx.o"
-"f7_motor\main.o"
 "f7_motor\stm32f7xx_it.o"
 "f7_motor\stm32f7xx_hal_msp.o"
+"f7_motor\main.o"
 "f7_motor\stm32f7xx_hal_adc.o"
 "f7_motor\stm32f7xx_hal_adc_ex.o"
 "f7_motor\stm32f7xx_hal_rcc.o"
@@ -33,8 +33,8 @@
 "f7_motor\xos_as5048a.o"
 "f7_motor\xos_current_sensor.o"
 "f7_motor\xos_lowpass_filter.o"
-"f7_motor\xos_motor_pid.o"
 "f7_motor\xos_as5600.o"
+"f7_motor\xos_pid..o"
 --library_type=microlib --strict --scatter "f7_motor\f7_motor.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

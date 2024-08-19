@@ -5,6 +5,10 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "math.h"
+#include "xos_as5600.h"
+//#include "xos_pid.hpp"
+
+
 
 void xos_Foc_SetVol(float uq, float angle);
 void xos_Foc_SetPwm( float ua, float ub,float  uc);
@@ -18,12 +22,20 @@ extern TIM_HandleTypeDef htim2;
 static int32_t xos_inter=0;
 static int32_t xos_pwm_enable=0;
 static uint32_t xos_SysTick_CNt=0;
+float zero_electric_angle=0;
+float shaft_angle=0;
+float voltage_limit=5;
+float voltage_power_supply=5;
+
+//PID--------------------------------->
+//PIDController xos_vel_pid=PIDController;//{.P=2,.I=0,.D=0,ramp=100000,.limit=12};
+
 
 void xos_motor_time_init(void)
 {
 
   /* USER CODE BEGIN TIM2_Init 0 */
-
+	voltage_power_supply=5;
   /* USER CODE END TIM2_Init 0 */
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
@@ -34,9 +46,9 @@ void xos_motor_time_init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 0;
+  htim2.Init.Prescaler = 36-1;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 2400-1;
+  htim2.Init.Period = 200-1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -103,7 +115,7 @@ void xo_SetSysTick(void)
 	++xos_SysTick_CNt;
 
 	if(xos_SysTick_CNt%120==0){
-		velocityOpenloop(2,5/3,TIM2);
+		velocityOpenloop(2,voltage_power_supply/3,TIM2);
 	}
 }
 
@@ -134,79 +146,11 @@ void xos_sg90_update(void)
   //HAL_Delay(100);
 }
 
-#if 0
-void xos_Foc_SetPwm( float ua, float ub,float  uc)
-{
-    float dc_a,dc_b,dc_c;
-    dc_a=_constrain(ua/voltage_power_supply,0,1);
-    dc_b=_constrain(ub/voltage_power_supply,0,1);
-    dc_c=_constrain(uc/voltage_power_supply,0,1);
-
-    //set pwm
-    //printf("\r\n Foc set vol -------| \r\n Ua[%f] \r\n Ub[%f] \r\n Uc[%f]\r\n ",dc_a,dc_b,dc_c);
-}
-
-void xos_Foc_SetVol(float uq, float angle)
-{
-    angle= (float)_normalizeAngle(angle);
-    //printf("\r\n Foc Set Vol angle [%f] \n",angle);
-    float ua,ub,uc;
-    //?????
-    float ualpha=-uq*sin(angle);
-    float ubeta=uq*cos(angle);
-
-    //??????
-    ua=ualpha+voltage_power_supply/2;
-    ub=(sqrt(3)*ubeta-ualpha)/2+voltage_power_supply/2;
-    uc=(-ualpha-sqrt(3)*ubeta)/2+voltage_power_supply/2;
-
-    //setpwm
-    xos_Foc_SetPwm(ua,ub,uc);
-}
-
-// ???=????*???
-float _electricalAngle(float shaft_angle, int pole_pairs)
-{
-    return (shaft_angle * pole_pairs);
-}
-
-// ?????? [0,2PI]
-float _normalizeAngle(float angle)
-{
-    float a = fmod(angle, 2*PI);   //???????????,??????????
-    a=(float )(a >= 0 ? a : (a + 2*PI));
-    //printf("\r\n _normalizeAngle %f\r\n",a);
-    return  a;//a >= 0 ? a : (a + 2*PI);
-    //????????:condition ? expr1 : expr2
-    //??,condition ??????????,??????,??? expr1 ??,???? expr2 ????????????? if-else ????????
-    //fmod ????????????????,? angle ??????,??????? _2PI ??????????,?? angle ???? 0 ? _2PI ?????,? fmod(angle, _2PI) ????????
-    //??,? angle ??? -PI/2,_2PI ??? 2PI ?,fmod(angle, _2PI) ??????????????,???????????? _2PI ???????? [0, 2PI] ????,?????????????
-}
-
-void xos_VelocityopenLoop(float target_velocity)
-{
-    static float shaft_angle=0;
-    static uint32_t pre_time=0;
-		static float angle_raw=0;
-		float uq=(float)(voltage_power_supply/3);
-	
-    uint32_t  now_time=xos_GetSystick();
-    uint32_t Ts=(uint32_t)(now_time-pre_time);
-		
-	  if(Ts !=0){
-			shaft_angle=_normalizeAngle((float)(shaft_angle+target_velocity*Ts));	
-    //printf("\r\n xos_VelocityopenLoop ------->Ts[%f]\r\n ",Ts);
-			angle_raw=_electricalAngle(shaft_angle,7);
-			xos_Foc_SetVol(uq,_electricalAngle(shaft_angle,7));
-		}
-    pre_time=now_time;
-}
-#endif
 
 extern float zero_electric_angle;
 extern int pole_pairs;
 extern float shaft_angle;
-extern int dir;
+int dir=-1;
 extern float voltage_limit;
 extern float voltage_power_supply;
 extern int period;
@@ -233,23 +177,23 @@ float _electricalAngle(float shaft_angle, int pole_pairs) {
 uint32_t xos_time_monitor_time=0;
 float velocityOpenloop(float target_velocity, float Uq, TIM_TypeDef * TIM_BASE)
 {
-static uint32_t pre_us=0;
- 
-    uint32_t now_us = xos_GetSystick();
+	static uint32_t pre_us=0;
+
+	uint32_t now_us = xos_GetSystick();
 	//Provides a tick value in microseconds.
-  //计算当前每个Loop的运行时间间隔
-  float Ts = (float)(now_us - pre_us) ;
+	//计算当前每个Loop的运行时间间隔
+	float Ts = (float)(now_us - pre_us) ;
 	xos_time_monitor_time=(uint32_t)Ts;
-  //float Ts=0.01;//5E-3f;
-  // 通过乘以时间间隔和目标速度来计算需要转动的机械角度，存储在 shaft_angle 变量中。
-  //在此之前，还需要对轴角度进行归一化，以确保其值在 0 到 2π 之间。
-  shaft_angle = _normalizeAngle(shaft_angle + target_velocity*Ts);
-  //以目标速度为 10 rad/s 为例，如果时间间隔是 1 秒，则在每个循环中需要增加 10 * 1 = 10 弧度的角度变化量，才能使电机转动到目标速度。
-  //如果时间间隔是 0.1 秒，那么在每个循环中需要增加的角度变化量就是 10 * 0.1 = 1 弧度，才能实现相同的目标速度。
-  //因此，电机轴的转动角度取决于目标速度和时间间隔的乘积。
-  // Uq is not related to voltage limit
-  setPhaseVoltage(Uq,  0, _electricalAngle(shaft_angle, pole_pairs),TIM_BASE);
-  pre_us = now_us;  //用于计算下一个时间间隔
+	Ts=Ts*1e-6f;//5E-3f;
+	// 通过乘以时间间隔和目标速度来计算需要转动的机械角度，存储在 shaft_angle 变量中。
+	//在此之前，还需要对轴角度进行归一化，以确保其值在 0 到 2π 之间。
+	shaft_angle = _normalizeAngle(shaft_angle + target_velocity*Ts);
+	//以目标速度为 10 rad/s 为例，如果时间间隔是 1 秒，则在每个循环中需要增加 10 * 1 = 10 弧度的角度变化量，才能使电机转动到目标速度。
+	//如果时间间隔是 0.1 秒，那么在每个循环中需要增加的角度变化量就是 10 * 0.1 = 1 弧度，才能实现相同的目标速度。
+	//因此，电机轴的转动角度取决于目标速度和时间间隔的乘积。
+	// Uq is not related to voltage limit
+	setPhaseVoltage(voltage_power_supply/3,  0, _electricalAngle(shaft_angle,7),TIM_BASE);
+	pre_us = now_us;  //用于计算下一个时间间隔
   return Uq;
 }
 
@@ -263,7 +207,7 @@ float xos_pwmb=0;
 float xos_pwmc=0;
 void setPwm(float Ua, float Ub, float Uc, TIM_TypeDef * TIM_BASE)
 {
-	//  // 限制上限
+	//限制上限
 	//Ua = _constrain(Ua/, 0.0f, voltage_limit);
 	//Ub = _constrain(Ub, 0.0f, voltage_limit);
 	//Uc = _constrain(Uc, 0.0f, voltage_limit);
@@ -281,9 +225,10 @@ void setPwm(float Ua, float Ub, float Uc, TIM_TypeDef * TIM_BASE)
 	xos_ub=dc_b;
 	xos_uc=dc_c;
 	
-	TIM2->CCR1 = (uint32_t) roundf(dc_a*period);
-	TIM2->CCR3 = (uint32_t) roundf(dc_c*period);	
-	TIM2->CCR4 = (uint32_t) roundf(dc_b*period);
+	TIM2->CCR1 = (uint32_t) roundf(dc_a*200);
+	TIM2->CCR3 = (uint32_t) roundf(dc_c*200);	
+	TIM2->CCR4 = (uint32_t) roundf(dc_b*200);
+	
 	xos_pwma=TIM2->CCR1;
 	xos_pwmb=TIM2->CCR4;
 	xos_pwmc=TIM2->CCR3;
@@ -319,6 +264,7 @@ void setPhaseVoltage(float Uq,float Ud, float angle_el, TIM_TypeDef * TIM_BASE) 
 
 
 static int xossi=0;
+float xos_jwangle=0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 {
 	//xos_sg90_update();
@@ -327,6 +273,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 
 	//xos_PeriodElapsedCallback();
 	//velocityOpenloop(2,5,TIM2);
-
+	
+	GetAngle_Without_Track();
+	xos_jwangle=GetAngle();
 }
 

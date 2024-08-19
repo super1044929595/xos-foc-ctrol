@@ -1,7 +1,8 @@
 #include "xos_as5600.h"
+#include "main.h"
 
-//extern I2C_HandleTypeDef hi2c1;
-I2C_HandleTypeDef hi2c1;
+extern I2C_HandleTypeDef hi2c1;
+//I2C_HandleTypeDef hi2c1;
 
 #define PI					3.14159265358979f
 #define cpr (float)(2.0f*PI)

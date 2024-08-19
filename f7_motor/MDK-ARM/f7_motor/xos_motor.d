@@ -43,4 +43,5 @@ f7_motor/xos_motor.o: ..\xos_motor_sdk\xos_motor.c ..\Core\Inc\main.h \
   ..\xos_motor_sdk\xos_motor.h ..\xos_motor_sdk\xos_motor_pid.h \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\stdio.h \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\stdlib.h \
-  D:\sw_install\keil_install\ARM\ARMCLANG\include\math.h
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\math.h \
+  ..\xos_motor_sdk\xos_as5600.h

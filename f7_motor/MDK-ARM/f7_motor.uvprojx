@@ -329,8 +329,8 @@
             <uC99>1</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
-            <v6Lang>3</v6Lang>
-            <v6LangP>3</v6LangP>
+            <v6Lang>5</v6Lang>
+            <v6LangP>8</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F767xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F7xx_HAL_Driver/Inc;../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F7xx/Include;../Drivers/CMSIS/Include;../xos_motor_sdk;D:/sw_install/keil_install/ARM/ARMCLANG/include</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F7xx_HAL_Driver/Inc;../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F7xx/Include;../Drivers/CMSIS/Include;../xos_motor_sdk;D:/sw_install/keil_install/ARM/ARMCLANG/include;..\xos_motor_sdk</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -395,11 +395,6 @@
           <GroupName>Application/User/Core</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Core/Src/main.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f7xx_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f7xx_it.c</FilePath>
@@ -408,6 +403,11 @@
               <FileName>stm32f7xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f7xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\main.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -779,14 +779,14 @@
               <FilePath>..\xos_motor_sdk\xos_lowpass_filter.c</FilePath>
             </File>
             <File>
-              <FileName>xos_motor_pid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\xos_motor_sdk\xos_motor_pid.c</FilePath>
-            </File>
-            <File>
               <FileName>xos_as5600.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\xos_motor_sdk\xos_as5600.c</FilePath>
+            </File>
+            <File>
+              <FileName>xos_pid..cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\xos_motor_sdk\xos_pid..cpp</FilePath>
             </File>
           </Files>
         </Group>
