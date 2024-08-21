@@ -1,4 +1,4 @@
-f7_motor/xos_motor.o: ..\xos_motor_sdk\xos_motor.c ..\Core\Inc\main.h \
+f7_motor/xos_motor.o: ..\xos_motor_sdk\xos_motor.cpp ..\Core\Inc\main.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h \
   ..\Core\Inc\stm32f7xx_hal_conf.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h \
@@ -6,6 +6,8 @@ f7_motor/xos_motor.o: ..\xos_motor_sdk\xos_motor.c ..\Core\Inc\main.h \
   ..\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h \
   ..\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f767xx.h \
   ..\Drivers\CMSIS\Include\core_cm7.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\stdint.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__config \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\stdint.h \
   D:\work\f7_pro_motor\f7_motor\Drivers\CMSIS\Include\cmsis_version.h \
   D:\work\f7_pro_motor\f7_motor\Drivers\CMSIS\Include\cmsis_compiler.h \
@@ -15,6 +17,7 @@ f7_motor/xos_motor.o: ..\xos_motor_sdk\xos_motor.c ..\Core\Inc\main.h \
   D:\work\f7_pro_motor\f7_motor\Drivers\CMSIS\Include\mpu_armv7.h \
   ..\Drivers\CMSIS\Device\ST\STM32F7xx\Include\system_stm32f7xx.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\stddef.h \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\stddef.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_exti.h \
@@ -41,7 +44,167 @@ f7_motor/xos_motor.o: ..\xos_motor_sdk\xos_motor.c ..\Core\Inc\main.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_ll_usb.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd_ex.h \
   ..\xos_motor_sdk\xos_motor.h ..\xos_motor_sdk\xos_motor_pid.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\stdio.h \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\stdio.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\stdlib.h \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\stdlib.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\math.h \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\math.h \
-  ..\xos_motor_sdk\xos_as5600.h
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\abs.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\enable_if.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_integral.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\integral_constant.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\remove_cv.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\remove_const.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\remove_volatile.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\copysign.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_arithmetic.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_floating_point.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\promote.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_same.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__utility\declval.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\limits \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__assert \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__verbose_abort \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__availability \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_signed.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__undef_macros \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\version \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\type_traits \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__fwd\hash.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\add_const.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\add_cv.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\add_lvalue_reference.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_referenceable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\add_pointer.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_void.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\remove_reference.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\cstddef \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\add_rvalue_reference.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\add_volatile.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\aligned_storage.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\conditional.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\nat.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\type_list.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\aligned_union.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\alignment_of.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\apply_cv.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_const.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_volatile.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\can_extract_key.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__fwd\pair.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\remove_const_ref.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\common_reference.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\common_type.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\decay.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_array.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_function.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_reference.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\remove_extent.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\remove_cvref.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\void_t.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\copy_cv.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\copy_cvref.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_convertible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\conjunction.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\dependent_type.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\disjunction.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\extent.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\has_unique_object_representation.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\remove_all_extents.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\has_virtual_destructor.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\invoke.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_base_of.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_core_convertible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_member_function_pointer.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_member_object_pointer.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_reference_wrapper.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__utility\forward.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_abstract.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_aggregate.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_assignable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_bounded_array.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_callable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_char_like_type.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_standard_layout.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_trivial.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_class.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_compound.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_fundamental.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_null_pointer.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_constant_evaluated.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_copy_assignable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_copy_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_default_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_destructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_empty.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_enum.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_final.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_implicitly_default_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_literal_type.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_member_pointer.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_move_assignable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_move_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_nothrow_assignable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_nothrow_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_nothrow_convertible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\lazy.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_nothrow_copy_assignable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_nothrow_copy_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_nothrow_default_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_nothrow_destructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_scalar.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_pointer.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_nothrow_move_assignable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_nothrow_move_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_object.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_union.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_pod.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_polymorphic.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_scoped_enum.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\underlying_type.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_specialization.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_swappable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_trivially_assignable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_trivially_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_trivially_copy_assignable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_trivially_copy_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_trivially_copyable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\cstdint \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_trivially_default_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_trivially_destructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_trivially_move_assignable.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_trivially_move_constructible.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_unbounded_array.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\is_unsigned.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\make_const_lvalue_ref.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\make_signed.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\make_unsigned.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\maybe_const.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\negation.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\rank.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\remove_pointer.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\result_of.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__functional\invoke.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\type_identity.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__type_traits\unwrap_ref.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\error_functions.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\exponential_functions.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\fdim.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\fma.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\gamma.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\hyperbolic_functions.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\hypot.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\inverse_hyperbolic_functions.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\inverse_trigonometric_functions.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\logarithms.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\min_max.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\modulo.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\remainder.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\roots.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\rounding_functions.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\traits.h \
+  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__math\trigonometric_functions.h \
+  ..\xos_motor_sdk\xos_as5600.h ..\xos_motor_sdk\xos_pid.h \
+  ..\xos_motor_sdk\xos_lowpass_filter.h

@@ -190,7 +190,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>1</useUlib>
+            <useUlib>0</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -329,8 +329,8 @@
             <uC99>1</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
-            <v6Lang>3</v6Lang>
-            <v6LangP>3</v6LangP>
+            <v6Lang>5</v6Lang>
+            <v6LangP>6</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
@@ -810,11 +810,6 @@
           <GroupName>xos_motor_sdk</GroupName>
           <Files>
             <File>
-              <FileName>xos_motor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\xos_motor_sdk\xos_motor.c</FilePath>
-            </File>
-            <File>
               <FileName>xos_as5048a.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\xos_motor_sdk\xos_as5048a.c</FilePath>
@@ -825,9 +820,9 @@
               <FilePath>..\xos_motor_sdk\xos_current_sensor.c</FilePath>
             </File>
             <File>
-              <FileName>xos_lowpass_filter.c</FileName>
+              <FileName>xos_softi2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\xos_motor_sdk\xos_lowpass_filter.c</FilePath>
+              <FilePath>..\xos_motor_sdk\xos_softi2c.c</FilePath>
             </File>
             <File>
               <FileName>xos_as5600.c</FileName>
@@ -835,14 +830,14 @@
               <FilePath>..\xos_motor_sdk\xos_as5600.c</FilePath>
             </File>
             <File>
-              <FileName>xos_pid..cpp</FileName>
+              <FileName>xos_motor.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\xos_motor_sdk\xos_pid..cpp</FilePath>
+              <FilePath>..\xos_motor_sdk\xos_motor.cpp</FilePath>
             </File>
             <File>
-              <FileName>xos_softi2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\xos_motor_sdk\xos_softi2c.c</FilePath>
+              <FileName>xos_lowpass_filter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\xos_motor_sdk\xos_lowpass_filter.cpp</FilePath>
             </File>
           </Files>
         </Group>

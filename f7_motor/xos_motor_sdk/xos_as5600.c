@@ -1,5 +1,8 @@
+
 #include "xos_as5600.h"
 #include "main.h"
+#include "xos_motor.h"
+#include "math.h"
 
 extern I2C_HandleTypeDef hi2c1;
 extern I2C_HandleTypeDef hi2c2;
@@ -11,6 +14,20 @@ extern I2C_HandleTypeDef hi2c2;
 #define AS5600_ADDRESS (0x36<<1)
 #define Angle_Hight_Register_Addr 0x0C //寄存器高位地址
 #define Angle_Low_Register_Addr   0x0D 
+
+//----------------------------------------------------
+float angle_prev1=0; 
+int full_rotations=0; // full rotation tracking;
+int vel_full_rotations=0;
+float angle_d;				//GetAngle_Without_Track()????
+float angle_cd;				//GetAngle()????
+uint32_t vel_angle_prev_ts=0;
+float vel_angle_prev=0;
+float angle_prev;
+
+#define DATA_SIZE 2
+
+
 
 void AS5600_Write_Reg(uint16_t reg, uint8_t *value,uint32_t count)
 {
@@ -34,12 +51,7 @@ void AS5600_Read_Reg(uint16_t reg, uint8_t* buf, uint8_t len)
 
 
  
-float angle_prev1=0; 
-int full_rotations=0; // full rotation tracking;
-float angle_d;				//GetAngle_Without_Track()????
-float angle_cd;				//GetAngle()????
 
-#define DATA_SIZE 2
                        
 int myabs(int n)
 {
@@ -47,43 +59,74 @@ int myabs(int n)
 return n * ( (n>>31<<1) +1);
 
 }
-//???????????
-float GetAngle(void)
-{
-	float val = angle_d;
-	float d_angle = val - angle_prev1;
-	//????????
-	//????????????80%???(0.8f*6.28318530718f)??????????,?????,??full_rotations??1(??d_angle??0)???1(??d_angle??0)?
-	if(myabs(d_angle) > (0.8f*2.0f*PI) ) full_rotations += ( d_angle > 0 ) ? -1 : 1; 
-	angle_prev1 = val;
 
-	angle_cd = full_rotations * (2.0f*PI) + angle_prev1;
-	return angle_cd;
-	//    return (float)full_rotations * 6.28318530718f + angle_prev;
+float getAngle(void)
+{
+	return (float)full_rotations * _2PI + angle_prev;
 }
 
 //????????,???0-6.28
 float GetAngle_Without_Track(void)
 {   
 	int16_t in_angle;
+	float angle_d=0;
 	uint8_t temp[DATA_SIZE]={0};
 	uint8_t rawangle_register=0x0C;
 	//AS5600_Write_Reg(0x0C, &rawangle_register, 1);
 	AS5600_Read_Reg( Angle_Hight_Register_Addr, temp, DATA_SIZE);
 	in_angle = ((int16_t)temp[0] <<8) | (temp[1]);
-	
-	angle_d = (float)in_angle * (2.0f*PI) / 4096;
-//angle_d????,???0-6.28	
+	angle_d = (float)in_angle*_2PI/4096;
+	return angle_d;
+}
+
+float xosGetAngle_Without_Track(void)
+{   
+	int16_t in_angle;
+	float angle_d=0;
+	uint8_t temp[DATA_SIZE]={0};
+	uint8_t rawangle_register=0x0C;
+	//AS5600_Write_Reg(0x0C, &rawangle_register, 1);
+	AS5600_Read_Reg( Angle_Hight_Register_Addr, temp, DATA_SIZE);
+	angle_d = ((int16_t)temp[0] <<8) | (temp[1]);
 	return angle_d;
 }
 
 
-float xos_angelupdate(void)
+
+float Sensor_update(void)
 {
-	GetAngle_Without_Track();
-	return GetAngle();
+	float val=GetAngle_Without_Track();
+	vel_angle_prev_ts=xos_GetSystick();
+	float d_angle = val - angle_prev;
+	 // 圈数检测
+    if(myabs(d_angle) > (0.8f*_2PI) ) full_rotations += ( d_angle > 0 ) ? -1 : 1; 
+	angle_prev=val;
+	angle_cd=full_rotations*(_2PI)+angle_prev;
+	return angle_cd;
 }
 
+float getMechanicalAngle(void) 
+{
+	return angle_prev;
+}
+
+float XOS_VEL=0;
+float getVelocity(void)
+{
+	// 计算采样时间
+	
+	float Ts = (vel_angle_prev_ts- vel_angle_prev_ts)*1e-6;
+	// 快速修复奇怪的情况（微溢出）
+	if(Ts <= 0) Ts = 1e-3f;
+	// 速度计算
+	float vel = ( (float)(full_rotations - vel_full_rotations)*_2PI + (angle_prev - vel_angle_prev) ) / Ts;   
+	XOS_VEL=vel;
+	
+	vel_angle_prev=angle_prev;
+	vel_full_rotations=full_rotations;
+	vel_angle_prev_ts=Ts;
+	return vel;
+}
 
 
 void xos_as5600_Init(void)
@@ -142,7 +185,7 @@ void xos_as5600_Init(void)
 #define I2C_TIME_OUT_BYTE   1
 
 #define abs(x) ((x)>0?(x):-(x))
-#define _2PI 6.28318530718
+//#define _2PI 6.28318530718
 
 #define AS5600_RAW_ADDR    0x36
 #define AS5600_ADDR        (AS5600_RAW_ADDR << 1)
