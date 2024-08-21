@@ -312,6 +312,21 @@
           <WinNumber>2</WinNumber>
           <ItemText>xos_jwangle,0x0A</ItemText>
         </Ww>
+        <Ww>
+          <count>22</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>angle_d</ItemText>
+        </Ww>
+        <Ww>
+          <count>23</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>angle_data_prev</ItemText>
+        </Ww>
+        <Ww>
+          <count>24</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>xos_jwangle</ItemText>
+        </Ww>
       </WatchWindow2>
       <Tracepoint>
         <THDelay>0</THDelay>
@@ -398,8 +413,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>../Core/Src/stm32f7xx_it.c</PathWithFileName>
-      <FilenameWithoutPath>stm32f7xx_it.c</FilenameWithoutPath>
+      <PathWithFileName>../Core/Src/main.c</PathWithFileName>
+      <FilenameWithoutPath>main.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -410,20 +425,20 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>../Core/Src/stm32f7xx_hal_msp.c</PathWithFileName>
-      <FilenameWithoutPath>stm32f7xx_hal_msp.c</FilenameWithoutPath>
+      <PathWithFileName>../Core/Src/stm32f7xx_it.c</PathWithFileName>
+      <FilenameWithoutPath>stm32f7xx_it.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
       <FileNumber>4</FileNumber>
-      <FileType>8</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Core\Src\main.cpp</PathWithFileName>
-      <FilenameWithoutPath>main.cpp</FilenameWithoutPath>
+      <PathWithFileName>../Core/Src/stm32f7xx_hal_msp.c</PathWithFileName>
+      <FilenameWithoutPath>stm32f7xx_hal_msp.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -832,6 +847,18 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\xos_motor_sdk\xos_pid..cpp</PathWithFileName>
       <FilenameWithoutPath>xos_pid..cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>37</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\xos_motor_sdk\xos_softi2c.c</PathWithFileName>
+      <FilenameWithoutPath>xos_softi2c.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

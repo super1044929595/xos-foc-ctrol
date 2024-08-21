@@ -24,8 +24,8 @@ static int32_t xos_pwm_enable=0;
 static uint32_t xos_SysTick_CNt=0;
 float zero_electric_angle=0;
 float shaft_angle=0;
-float voltage_limit=5;
-float voltage_power_supply=5;
+float voltage_limit=12.6;
+float voltage_power_supply=12.6;
 
 //PID--------------------------------->
 //PIDController xos_vel_pid=PIDController;//{.P=2,.I=0,.D=0,ramp=100000,.limit=12};
@@ -110,13 +110,17 @@ uint32_t xos_GetSystick(void)
 	return xos_SysTick_CNt;
 }
 
+
+
+static int xossi=0;
+float xos_jwangle=0;
 void xo_SetSysTick(void)
 {
 	++xos_SysTick_CNt;
-
-	if(xos_SysTick_CNt%120==0){
+	//if(xos_SysTick_CNt%120==0){		
+		xos_jwangle=xos_angelupdate();
 		velocityOpenloop(2,voltage_power_supply/3,TIM2);
-	}
+	//}
 }
 
 void set_angle(int    angle )
@@ -263,8 +267,6 @@ void setPhaseVoltage(float Uq,float Ud, float angle_el, TIM_TypeDef * TIM_BASE) 
 //---------------------------------------------------------------------------------------------
 
 
-static int xossi=0;
-float xos_jwangle=0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 {
 	//xos_sg90_update();
