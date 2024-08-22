@@ -41,5 +41,5 @@ f7_motor/xos_as5600.o: ..\xos_motor_sdk\xos_as5600.c \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_ll_usb.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd_ex.h \
-  ..\xos_motor_sdk\xos_motor.h ..\xos_motor_sdk\xos_motor_pid.h \
+  ..\xos_motor_sdk\xos_motor.h \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\math.h

@@ -43,7 +43,7 @@ f7_motor/xos_motor.o: ..\xos_motor_sdk\xos_motor.cpp ..\Core\Inc\main.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_ll_usb.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd_ex.h \
-  ..\xos_motor_sdk\xos_motor.h ..\xos_motor_sdk\xos_motor_pid.h \
+  ..\xos_motor_sdk\xos_motor.h \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\stdio.h \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\stdio.h \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\stdlib.h \

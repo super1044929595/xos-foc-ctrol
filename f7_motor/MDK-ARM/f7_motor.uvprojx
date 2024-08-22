@@ -839,6 +839,11 @@
               <FileType>8</FileType>
               <FilePath>..\xos_motor_sdk\xos_lowpass_filter.cpp</FilePath>
             </File>
+            <File>
+              <FileName>xos_pid.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\xos_motor_sdk\xos_pid.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -1,5 +1,5 @@
-f7_motor/xos_lowpass_filter.o: ..\xos_motor_sdk\xos_lowpass_filter.cpp \
-  ..\xos_motor_sdk\xos_lowpass_filter.h ..\xos_motor_sdk\xos_motor.h \
+f7_motor/xos_pid.o: ..\xos_motor_sdk\xos_pid.cpp \
+  ..\xos_motor_sdk\xos_pid.h ..\Core\Inc\main.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h \
   ..\Core\Inc\stm32f7xx_hal_conf.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h \
@@ -43,4 +43,5 @@ f7_motor/xos_lowpass_filter.o: ..\xos_motor_sdk\xos_lowpass_filter.cpp \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart_ex.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_ll_usb.h \
-  ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd_ex.h
+  ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd_ex.h \
+  ..\xos_motor_sdk\xos_motor.h

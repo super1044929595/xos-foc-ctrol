@@ -1,5 +1,4 @@
-f7_motor/xos_lowpass_filter.o: ..\xos_motor_sdk\xos_lowpass_filter.cpp \
-  ..\xos_motor_sdk\xos_lowpass_filter.h ..\xos_motor_sdk\xos_motor.h \
+f7_motor/main_1.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h \
   ..\Core\Inc\stm32f7xx_hal_conf.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h \
@@ -7,8 +6,6 @@ f7_motor/xos_lowpass_filter.o: ..\xos_motor_sdk\xos_lowpass_filter.cpp \
   ..\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h \
   ..\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f767xx.h \
   ..\Drivers\CMSIS\Include\core_cm7.h \
-  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\stdint.h \
-  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\__config \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\stdint.h \
   D:\work\f7_pro_motor\f7_motor\Drivers\CMSIS\Include\cmsis_version.h \
   D:\work\f7_pro_motor\f7_motor\Drivers\CMSIS\Include\cmsis_compiler.h \
@@ -18,7 +15,6 @@ f7_motor/xos_lowpass_filter.o: ..\xos_motor_sdk\xos_lowpass_filter.cpp \
   D:\work\f7_pro_motor\f7_motor\Drivers\CMSIS\Include\mpu_armv7.h \
   ..\Drivers\CMSIS\Device\ST\STM32F7xx\Include\system_stm32f7xx.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
-  D:\sw_install\keil_install\ARM\ARMCLANG\include\libcxx\stddef.h \
   D:\sw_install\keil_install\ARM\ARMCLANG\include\stddef.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_exti.h \
@@ -43,4 +39,6 @@ f7_motor/xos_lowpass_filter.o: ..\xos_motor_sdk\xos_lowpass_filter.cpp \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart_ex.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd.h \
   ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_ll_usb.h \
-  ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd_ex.h
+  ..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd_ex.h \
+  ..\xos_motor_sdk\xos_motor.h ..\xos_motor_sdk\xos_as5600.h \
+  ..\xos_motor_sdk\xos_softi2c.h

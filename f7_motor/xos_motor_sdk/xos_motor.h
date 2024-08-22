@@ -8,7 +8,7 @@ extern "C"{
 
 
 #include "stm32f7xx_hal.h"
-#include "xos_motor_pid.h"
+
 
 	void xos_motor_time_init(void);
 	void xos_sg90_update(void);
