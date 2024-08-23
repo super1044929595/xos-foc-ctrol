@@ -51,7 +51,7 @@ void xos_motor_time_init(void)
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 2400-1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
   {
     Error_Handler();
@@ -90,7 +90,8 @@ void xos_motor_time_init(void)
   {
     Error_Handler();
   }
-	  TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
+	
+  TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
   /* USER CODE BEGIN TIM2_Init 2 */
   sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
@@ -105,7 +106,7 @@ void xos_motor_time_init(void)
   sBreakDeadTimeConfig.Break2Filter = 0;
 
   sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
-	 sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
+	sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
   if (HAL_TIMEx_ConfigBreakDeadTime(&htim2, &sBreakDeadTimeConfig) != HAL_OK)
   {
     Error_Handler();
@@ -126,7 +127,6 @@ void xos_motor_time_init(void)
 	#endif
 #define _3PI_2 4.71238898038f
 
-	
 	//setPhaseVoltage(5, 0,_3PI_2,TIM2);
 	//HAL_Delay(1000);
 	zero_electric_angle=Sensor_update();
@@ -176,8 +176,8 @@ void xos_sg90_update(void)
   __HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_4,xos_inter);
   //HAL_Delay(100);
 }
-#define M_PI 3.1415926
 
+#define M_PI 3.1415926
 extern float zero_electric_angle;
 extern int pole_pairs;
 extern float shaft_angle;
@@ -199,7 +199,8 @@ float _normalizeAngle(float angle){
 }
 
 float _electricalAngle(float shaft_angle, int pole_pairs) {
-	return _normalizeAngle(((float)7)*shaft_angle-zero_electric_angle);
+	//return _normalizeAngle(((float)7)*shaft_angle-zero_electric_angle);
+	return _normalizeAngle(((float)7)*Sensor_update()-zero_electric_angle);
 }
 
 uint32_t getCurrentMicros(void)
@@ -224,27 +225,32 @@ float _electricalAnglexos()
 
 //开环速度函数
 float xos_time_monitor_time=0;
+float xos_angle_monitor=0;
+struct LowPassFilter filter= {.Tf=0.01,.y_prev=0.0f}; //Tf=10ms
+struct LowPassFilter angle_lowpass_filter= {.Tf=0.01,.y_prev=0.0f}; //Tf=10ms
 
+struct PIDController pid_controller = {.P=0.1,.I=0.1,.D=0.0,.output_ramp=100000.0,.limit=6,.error_prev=0,.output_prev=0,.integral_prev=0};
+
+float vec_out_filter=0;
 float velocityOpenloop(float target_velocity, float Uq, TIM_TypeDef * TIM_BASE)
 {
 	static uint32_t pre_us=0;
 	float Ts;
+	float sensor_angle;
 
 	uint32_t now_us =xos_GetSystick();
 	//Provides a tick value in microseconds.
 	//计算当前每个Loop的运行时间间隔
-	#if 0
-	Ts = (float)(now_us - pre_us) ;
-
+	now_us=now_us-pre_us;
 	
-	 xos_time_monitor_time=getVelocity();
+	if(now_us<2000) return 0;
+	Ts = (float)(now_us - pre_us)*1e-2f ;
 	if(Ts<=0 || Ts> 0.5f){
 		Ts=1e-3f;
 	}
-	#endif
-	Ts=1e-3f;
-
+    Ts = (float)(1)*1e-2f ;
 	shaft_angle=Sensor_update();
+	//shaft_angle=LowPassFilter_operator(shaft_angle,&angle_lowpass_filter);
 	//shaft_angle+=0.03;	
 	// 通过乘以时间间隔和目标速度来计算需要转动的机械角度，存储在 shaft_angle 变量中。
 	//在此之前，还需要对轴角度进行归一化，以确保其值在 0 到 2π 之间。
@@ -253,12 +259,15 @@ float velocityOpenloop(float target_velocity, float Uq, TIM_TypeDef * TIM_BASE)
 	//如果时间间隔是 0.1 秒，那么在每个循环中需要增加的角度变化量就是 10 * 0.1 = 1 弧度，才能实现相同的目标速度。
 	//因此，电机轴的转动角度取决于目标速度和时间间隔的乘积。
 	// Uq is not related to voltage limit
-	float sensor_angle;//=getAngle();
-	
-	sensor_angle=Sensor_update();
-	xos_time_monitor_time=sensor_angle;
+	//xos_time_monitor_time=LowPassFilter_operator(getVelocity(),&filter);
+	//float velo_controller_out=PID_xos_operator(xos_time_monitor_time,&pid_controller);
+	xos_angle_monitor=shaft_angle;
 	float Kp=0.133;
-	setPhaseVoltage(Kp*(0-sensor_angle)*180/PI,0,_electricalAngle(shaft_angle,7),TIM2);
+	vec_out_filter=LowPassFilter_operator(Kp*(3-Sensor_update())*180/PI,&filter);
+	float vec_out_pit=PID_xos_operator(vec_out_filter,&pid_controller);
+	xos_time_monitor_time=_electricalAngle(shaft_angle,7);
+	//vec_out_filter=-voltage_power_supply/3*180/PI;
+	setPhaseVoltage(vec_out_pit,0,_electricalAngle(shaft_angle,7),TIM2);
 	pre_us = now_us;  //用于计算下一个时间间隔
   return Uq;
 }
@@ -306,14 +315,14 @@ void setPwm(float Ua, float Ub, float Uc, TIM_TypeDef * TIM_BASE)
 float xos_ua_ori=0;
 float xos_ub_ori=0;
 float xos_uc_ori=0;
-
+float xos_angle_setphase=0;
 void setPhaseVoltage(float Uq,float Ud, float angle_el, TIM_TypeDef * TIM_BASE) 
 {
 	
 	Uq=_constrain(Uq,-(voltage_power_supply)/2,(voltage_power_supply)/2);
 	
 	angle_el = _normalizeAngle(angle_el+zero_electric_angle);
-	
+	xos_angle_setphase=angle_el;
 	// 帕克逆变换
 	float Ualpha =  -Uq*sin(angle_el);
 	float Ubeta =   Uq*cos(angle_el);
@@ -344,6 +353,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 	//velocityOpenloop(1,5,TIM2);
 	
 	//xos_motor_loop();
+	velocityOpenloop(1,5,TIM2);
 
 }
 
@@ -463,8 +473,6 @@ float xos_angle_set_value(float error)
 
 
 
-struct LowPassFilter filter= {.Tf=0.01,.y_prev=0.0f}; //Tf=10ms
-struct PIDController pid_controller = {.P=0.5,.I=0.1,.D=0.0,.output_ramp=100.0,.limit=6,.error_prev=0,.output_prev=0,.integral_prev=0};
 
 void xos_motor_loop(void)
 {

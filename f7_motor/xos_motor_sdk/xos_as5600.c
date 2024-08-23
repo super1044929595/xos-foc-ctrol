@@ -98,8 +98,8 @@ float Sensor_update(void)
 	float val=GetAngle_Without_Track();
 	vel_angle_prev_ts=xos_GetSystick();
 	float d_angle = val - angle_prev;
-	 // 圈数检测
-    if(myabs(d_angle) > (0.8f*_2PI) ) full_rotations += ( d_angle > 0 ) ? -1 : 1; 
+	// 圈数检测
+	if(myabs(d_angle) > (0.8f*_2PI) ) full_rotations += ( d_angle > 0 ) ? -1 : 1; 
 	angle_prev=val;
 	angle_cd=full_rotations*(_2PI)+angle_prev;
 	return angle_cd;
@@ -114,7 +114,6 @@ float XOS_VEL=0;
 float getVelocity(void)
 {
 	// 计算采样时间
-	
 	float Ts = (vel_angle_prev_ts- vel_angle_prev_ts)*1e-6;
 	// 快速修复奇怪的情况（微溢出）
 	if(Ts <= 0) Ts = 1e-3f;

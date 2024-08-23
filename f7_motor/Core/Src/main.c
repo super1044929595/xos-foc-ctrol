@@ -132,7 +132,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	velocityOpenloop(1,5,TIM2);
+	//velocityOpenloop(1,5,TIM2);
 
 
     /* USER CODE BEGIN 3 */
