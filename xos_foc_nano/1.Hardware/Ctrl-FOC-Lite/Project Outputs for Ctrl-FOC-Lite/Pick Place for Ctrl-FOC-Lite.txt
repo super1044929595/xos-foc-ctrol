@@ -1,0 +1,107 @@
+Altium Designer Pick and Place Locations
+D:\work\Ctrl-FOC-Lite-main\1.Hardware\Ctrl-FOC-Lite\Project Outputs for Ctrl-FOC-Lite\Pick Place for Ctrl-FOC-Lite.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       05/09/24
+Time:       17:27
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mil
+
+Designator Comment         Layer       Footprint              Center-X(mil) Center-Y(mil) Rotation Description                                                                                                      
+C34        47nF            TopLayer    CAP_0402               1569.000      204.000       0        Capacitor                                                                                                        
+K1         "TACT 4P"       BottomLayer ButtonTACT_3.5*3.55_90 1545.000      1060.000      90       Button                                                                                                           
+K2         "TACT 4P"       BottomLayer ButtonTACT_3.5*3.55_90 1545.000      825.000       90       Button                                                                                                           
+USB1       Type-C          TopLayer    Type-C-TOP             996.221       1098.583      90       ""                                                                                                               
+U6         TL431IDBZT      BottomLayer SOT23-3                715.000       295.000       180      "Adjustable precision shunt regulator 3-SOT-23 -40 to 85"                                                        
+R28        4.7K            BottomLayer RES_0402               820.000       835.000       0        Resistor                                                                                                         
+R26        4.7K            BottomLayer RES_0402               820.000       800.000       0        Resistor                                                                                                         
+R11        120R            BottomLayer RES_0402               770.000       395.000       270      Resistor                                                                                                         
+R8         3.3K            TopLayer    RES_0402               1165.000      755.000       180      Resistor                                                                                                         
+R5         5.1K            BottomLayer RES_0402               1080.000      965.000       90       Resistor                                                                                                         
+R3         NCP15XH103F03RC TopLayer    RES_0402               1165.000      815.000       0        "THERMISTOR 10K OHM NTC 0402 SMD"                                                                                
+P11        HDR1x3_2.54     TopLayer    HDR1X3_2.54_180        1450.000      380.000       90       Header                                                                                                           
+P10        SH1.0-5P        TopLayer    SH1.0-5P               582.500       375.000       270      ""                                                                                                               
+P9         SH1.0-5P        BottomLayer SH1.0-5P               1440.000      107.500       180      ""                                                                                                               
+P8         SH1.0-5P        TopLayer    SH1.0-5P               640.000       107.500       0        ""                                                                                                               
+P7         SH1.0-5P        TopLayer    SH1.0-5P               1440.000      107.500       0        ""                                                                                                               
+P6         HDR1x3_2.54     TopLayer    HDR1X3_2.54_180        1450.000      280.000       90       Header                                                                                                           
+P5         SH1.0-2P        TopLayer    SH1.0-2P               1492.500      519.685       90       ""                                                                                                               
+P4         SH1.0-2P        TopLayer    SH1.0-2P               1492.500      710.000       90       ""                                                                                                               
+P3         SH1.0-3P        BottomLayer SH1.0-3P               640.000       107.500       180      Header                                                                                                           
+P1         SH1.0-3P        TopLayer    SH1.0-3P               582.500       635.000       270      Header                                                                                                           
+C10        10uF            TopLayer    CAP_0402               1165.000      785.000       180      Capacitor                                                                                                        
+Y1         8MHz            BottomLayer 晶振-3P                  1420.000      1255.000      0        村田贴片                                                                                                             
+U8         DRV8313PWP      BottomLayer HTSSOP-28              1080.000      770.000       90       "65-V max, 3-A peak 3-phase motor driver 28-HTSSOP -40 to 125"                                                   
+U7         STM32F103CBT6   TopLayer    LQFP-48                1400.000      1080.000      270      "ARM Cortex-M3 32-bit MCU, 128 KB Flash, 20 KB Internal RAM, 37 I/Os, 48-pin LQFP, -40 to 85 degC, Tray"         
+U5         ME3116          BottomLayer SOT23-6                1030.000      1165.000      270      DC-DC                                                                                                            
+U4         SN65HVD232D     BottomLayer SO-8                   1490.000      565.000       270      ""                                                                                                               
+U3         INA240A2PWR     TopLayer    SOP65_P640X120-8N      940.000       720.000       90       "-4 to 80V, bidirectional, ultra-precise current sense amplifier with enhanced PWM rejection 8-TSSOP -40 to 125" 
+U2         INA240A2PWR     TopLayer    SOP65_P640X120-8N      1280.000      720.000       90       "-4 to 80V, bidirectional, ultra-precise current sense amplifier with enhanced PWM rejection 8-TSSOP -40 to 125" 
+U1         "LP2992 3V3"    BottomLayer SOT23-5                1166.496      1195.740      90       LDO                                                                                                              
+R27        3.3K            BottomLayer RES_0402               1330.000      750.000       0        Resistor                                                                                                         
+R25        1.5K            TopLayer    RES_0402               950.000       910.000       90       Resistor                                                                                                         
+R22        4.7K            BottomLayer RES_0402               710.000       380.000       0        Resistor                                                                                                         
+R24        3.3K            BottomLayer RES_0402               1330.000      785.000       0        Resistor                                                                                                         
+R23        22R             TopLayer    RES_0402               1020.000      910.000       90       Resistor                                                                                                         
+R19        4.7K            BottomLayer RES_0402               710.000       415.000       0        Resistor                                                                                                         
+R21        3.3K            BottomLayer RES_0402               1330.000      820.000       0        Resistor                                                                                                         
+R20        22R             TopLayer    RES_0402               984.997       910.000       90       Resistor                                                                                                         
+R17        0R              TopLayer    RES_0402               1230.000      1270.000      180      Resistor                                                                                                         
+R16        10K             BottomLayer RES_0402               1424.997      1138.000      270      Resistor                                                                                                         
+R18        10K             BottomLayer RES_0402               1045.000      965.000       270      Resistor                                                                                                         
+R15        0R              TopLayer    RES_0402               1230.000      1234.997      180      Resistor                                                                                                         
+R14        1M              TopLayer    RES_0402               890.000       930.000       0        Resistor                                                                                                         
+R13        1.8K            BottomLayer RES_0402               895.000       1280.000      0        Resistor                                                                                                         
+R12        120R/NC         TopLayer    RES_0402               1366.000      520.000       270      Resistor                                                                                                         
+R10        10K             BottomLayer RES_0402               895.000       1250.000      0        Resistor                                                                                                         
+R6         5.1K            BottomLayer RES_0402               985.000       980.000       0        Resistor                                                                                                         
+R7         0.01R           TopLayer    1206-RES               1060.000      650.000       270      Resistor                                                                                                         
+R2         560K            BottomLayer RES_0402               820.000       870.000       180      Resistor                                                                                                         
+R4         2K              BottomLayer RES_0402               815.000       1280.000      180      Resistor                                                                                                         
+R9         4.7K            BottomLayer RES_0402               820.000       765.000       180      Resistor                                                                                                         
+R1         0.01R           TopLayer    1206-RES               1160.000      650.000       90       Resistor                                                                                                         
+P2         电机接插件-3P        TopLayer    AMASS-MR30-M           1040.000      490.000       0        "AMASS MR30"                                                                                                     
+L1         6.8uH           BottomLayer IND-201612             997.000       1040.000      180      ""                                                                                                               
+D7         二极管-5B5819WS    TopLayer    SOD-323                820.000       870.000       90       40V                                                                                                              
+D6         二极管-5B5819WS    BottomLayer SOD-323                880.000       1150.000      270      40V                                                                                                              
+D5         二极管-5B5819WS    BottomLayer SOD-323                860.000       955.000       0        40V                                                                                                              
+D4         SMBJ28CA        TopLayer    SMBJ-CA_MFG            700.000       890.000       270      ""                                                                                                               
+D2         SS54            TopLayer    DO-214AC               550.000       890.000       270      Diode                                                                                                            
+D3         二极管-5B5817WS    TopLayer    SOD-323                820.000       716.000       270      40V                                                                                                              
+D1         color?          BottomLayer LED_0402_RED           815.000       1250.000      180      LED                                                                                                              
+C33        0.1uF           BottomLayer CAP_0402               1389.997      1138.000      90       Capacitor                                                                                                        
+C32        10uF            BottomLayer CAP_0402               1334.997      1118.000      180      Capacitor                                                                                                        
+C31        0.1uF           BottomLayer CAP_0402               1334.997      1153.000      180      Capacitor                                                                                                        
+C30        0.47uF          BottomLayer CAP_0402               985.000       945.000       180      Capacitor                                                                                                        
+C28        0.1uF           BottomLayer CAP_0402               1459.997      1138.000      90       Capacitor                                                                                                        
+C27        0.1uF           BottomLayer CAP_0402               1550.000      1240.000      135      Capacitor                                                                                                        
+C26        0.1uF           BottomLayer CAP_0402               1460.000      985.000       270      Capacitor                                                                                                        
+C25        0.1uF           BottomLayer CAP_0402               1180.000      980.000       0        Capacitor                                                                                                        
+C29        0.1uF           BottomLayer CAP_0402               1195.000      595.000       180      Capacitor                                                                                                        
+C24        10nF            BottomLayer CAP_0402               1270.000      595.000       180      Capacitor                                                                                                        
+C23        10uF            BottomLayer CAP_0402               1075.000      1040.000      90       Capacitor                                                                                                        
+C22        10uF            BottomLayer CAP_0402               895.000       1030.000      0        Capacitor                                                                                                        
+C21        0.1uF           BottomLayer CAP_0402               895.000       1000.000      0        Capacitor                                                                                                        
+C20        0.1uF           BottomLayer CAP_0402               930.000       1115.000      90       Capacitor                                                                                                        
+C19        100pF           BottomLayer CAP_0402               950.000       1260.000      90       Capacitor                                                                                                        
+C18        0.1uF           BottomLayer CAP_0402               930.000       1185.000      270      Capacitor                                                                                                        
+C17        0.1uF           BottomLayer CAP_0402               1330.000      855.000       0        Capacitor                                                                                                        
+C9         10uF            BottomLayer CAP_0402               820.000       695.000       180      Capacitor                                                                                                        
+C15        100uF           BottomLayer 1206-CAP               556.998       269.998       180      Capacitor                                                                                                        
+C14        100uF           TopLayer    1206-CAP               800.002       505.002       90       Capacitor                                                                                                        
+C13        100uF           BottomLayer 1206-CAP               556.998       399.998       180      Capacitor                                                                                                        
+C12        100uF           BottomLayer 1206-CAP               556.998       334.998       180      Capacitor                                                                                                        
+C11        100uF           TopLayer    1206-CAP               730.002       505.002       90       Capacitor                                                                                                        
+C8         10uF            BottomLayer CAP_0402               820.000       905.000       180      Capacitor                                                                                                        
+C7         1uF             BottomLayer CAP_0402               800.000       640.000       90       Capacitor                                                                                                        
+C6         1uF             BottomLayer CAP_0402               800.000       570.000       270      Capacitor                                                                                                        
+C16        10uF            BottomLayer CAP_0402               820.000       730.000       180      Capacitor                                                                                                        
+C4         10uF            TopLayer    CAP_0402               820.000       960.000       180      Capacitor                                                                                                        
+C5         0.1uF           TopLayer    CAP_0402               890.000       895.000       180      Capacitor                                                                                                        
+C3         10nF            BottomLayer CAP_0402               1065.000      1275.000      0        Capacitor                                                                                                        
+C2         10uF            BottomLayer CAP_0402               1270.000      1275.000      180      Capacitor                                                                                                        
+C1         0.1uF           BottomLayer CAP_0402               1270.000      1245.000      180      Capacitor                                                                                                        
+1          OLED-6432       BottomLayer OLED-6432-TOP          723.271       739.606       90       显示屏                                                                                                              

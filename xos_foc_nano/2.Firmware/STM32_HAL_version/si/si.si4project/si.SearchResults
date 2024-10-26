@@ -1,0 +1,6 @@
+---- PIDController Matches (6 in 2 files) ----
+pid.cpp (D:\work\Ctrl-FOC-Lite-main\2.Firmware\STM32_HAL_version\Ctrl-FOC-Lite-fw\Ctrl\Utils) line 3 : PIDController::PIDController(float P, float I, float D, float ramp, float limit)
+pid.cpp (D:\work\Ctrl-FOC-Lite-main\2.Firmware\STM32_HAL_version\Ctrl-FOC-Lite-fw\Ctrl\Utils) line 12 : float PIDController::operator()(float error)
+pid.h (D:\work\Ctrl-FOC-Lite-main\2.Firmware\STM32_HAL_version\Ctrl-FOC-Lite-fw\Ctrl\Utils) line 11 : class PIDController
+PIDController in pid.h (D:\work\Ctrl-FOC-Lite-main\2.Firmware\STM32_HAL_version\Ctrl-FOC-Lite-fw\Ctrl\Utils) :     PIDController(float P, float I, float D, float ramp, float limit);
+PIDController in pid.h (D:\work\Ctrl-FOC-Lite-main\2.Firmware\STM32_HAL_version\Ctrl-FOC-Lite-fw\Ctrl\Utils) :     ~PIDController() = default;

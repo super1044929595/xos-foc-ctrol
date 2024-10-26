@@ -1,0 +1,11 @@
+Output: Generates pick and place files
+Type  : Pick Place
+From  : Variant [[No Variations]] of Project [Ctrl-FOC-Lite.PrjPCB]
+   Generated File[Pick Place for Ctrl-FOC-Lite.txt]
+   Generated File[Pick Place for Ctrl-FOC-Lite.csv]
+
+
+Files Generated   : 2
+Documents Printed : 0
+
+Finished Output Generation At 17:27:56 On 2024/9/5
